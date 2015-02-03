@@ -19,7 +19,7 @@ module CanonicalRails
     
     def canonical_protocol
       protocol = request.protocol
-      if CanonicalRails.ssl_only_controllers.empty?
+      unless CanonicalRails.ssl_only_controllers.empty?
         protocol = "http://"
         protocal = "https://" if CanonicalRails.ssl_only_controllers.include? request.params['controller'].to_sym
       end
