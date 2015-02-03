@@ -34,4 +34,8 @@ module CanonicalRails
     @@sym_whitelisted_actions ||= self.whitelisted_parameters.map(&:to_sym)
   end
   
+  def self.sym_ssl_only_controllers
+    @@sym_ssl_only_controllers ||= self.ssl_only_controllers.map(&:to_sym)
+  end
+  
 end
