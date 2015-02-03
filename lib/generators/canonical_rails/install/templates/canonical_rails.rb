@@ -19,4 +19,7 @@ CanonicalRails.setup do |config|
   
   config.whitelisted_parameters# = []
   
+  # Force http protocal unless controllers specified are requested
+  config.ssl_only_controllers# = []
+  
 end
