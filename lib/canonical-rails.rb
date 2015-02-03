@@ -22,6 +22,9 @@ module CanonicalRails
   
   mattr_accessor :whitelisted_parameters
   @@whitelisted_parameters = []
+  
+  mattr_accessor :ssl_only_controllers
+  @@ssl_only_controllers = []
 
   def self.sym_collection_actions
     @@sym_collection_actions ||= self.collection_actions.map(&:to_sym)
