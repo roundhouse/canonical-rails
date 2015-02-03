@@ -16,9 +16,17 @@ module CanonicalRails
     def canonical_host
       CanonicalRails.host || request.host
     end
+    
+    def canonical_protocol
+      protocol = request.protocol
+      if CanonicalRails.ssl_only_controllers.empty?
+        protocol = "http://"
+        protocal = "https://" if CanonicalRails.ssl_only_controllers.include? request.params['controller'].to_sym
+      end
+    end
 
-    def canonical_href(host=canonical_host)
-      raw "#{request.protocol}#{host}#{path_without_html_extension}#{trailing_slash_if_needed}#{whitelisted_query_string}"
+    def canonical_href(host=canonical_host, protocol=canonical_protocol)
+      raw "#{protocol}#{host}#{path_without_html_extension}#{trailing_slash_if_needed}#{whitelisted_query_string}"
     end
 
     def canonical_tag(host=canonical_host)
