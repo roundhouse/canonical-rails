@@ -21,8 +21,9 @@ module CanonicalRails
       protocol = request.protocol
       if CanonicalRails.ssl_only_controllers.present?
         protocol = "http://"
-        protocal = "https://" if CanonicalRails.sym_ssl_only_controllers.include? request.params['controller'].to_sym
+        protocol = "https://" if CanonicalRails.sym_ssl_only_controllers.include? request.params['controller'].to_sym
       end
+      protocol
     end
 
     def canonical_href(host=canonical_host, protocol=canonical_protocol)
